@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import Fruna from './Fruna.js';
+import Insta from './Insta.js';
 
-class Frulist extends Component {
+class Intalist extends Component {
   render() {
   return (
  		<ul>
           {this.props.frunas.map(u => {
             return (
-              <Fruna
+              <Insta
                 key={u.id}
-                name={u.name}
-                age={u.age}
+                name={u.username}
+                age={u.media}
               />
             );
           })}
