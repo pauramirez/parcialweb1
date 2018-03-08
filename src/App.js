@@ -2,42 +2,73 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Instalist from './Instalist.js'
-import insta  from "https://www.instagram.com/"
+import instaURL  from "https://www.instagram.com/"
 
-var user_j;
+
 
 class App extends Component {
 
-imagenes1(user, callback){
-  fetch(Insta + user + "/?__a=1").then(function(response) {
-  return response.json();
-})
-.then(function(myjson) {
-  var objectURL = URL.createObjectURL(myjson);
-  miImagen.src = objectURL;
-  me.setState(myjson)
-});
-console.log(myjson)
-}
+  getLikes(imagenes1, imagenes2){
+    likes1 = JSON.parse(imagenes1);
+    likes2 = JSON.parse(imagenes2);
+
+  }
+
+  imagenes1(user1){
+    
+    let me1 = this;
+    fetch(instaURL + user1 + "/?__a=1")
+      .then((res) => {
+        return res.json();
+      })
+      .then((images1) => {
+        me1.setState({images1:images1});
+      })
+      .catch((err) => console.log(err) );
+  }
+
+  imagenes2(user2){
+   
+    let me2 = this;
+    fetch(instaURL + user2 + "/?__a=1")
+      .then((res) => {
+        return res.json();
+      })
+      .then((followers) => {
+        me2.setState({images1:images1});
+      })
+      .catch((err) => console.log(err) );
+  }
 
   constructor() {
     super();
     this.state = {
       Instas: [
-        {id: 1, username: "paula", age: 5},
-        {id: 2, media: "test", age: 15}
+      {id: 1, username: "paula", age: 5},
+      {id: 2, media: "test", age: 15}
       ]
     };
   }
   
   render() {
-    return (
-      <div>
-        <input type="text" name="usuario1" id="usr"> Usuario1 </input>
-        <input type="text" name="usuario1" id="usr"> Usuario2 </input>
-        <Frulist Instas={this.state.Instas} />
-      </div>
-    );
+    <ul>
+          {this.props.Instas.map(u => {
+            return (
+              <Instalist
+                key={u.id}
+                name={u.username}
+                age={u.media}
+              />
+            );
+          })}
+    </ul>
   }
 }
 export default App;
+
+
+
+
+
+
+

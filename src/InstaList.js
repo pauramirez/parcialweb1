@@ -5,7 +5,21 @@ import Insta from './Insta.js';
 class Intalist extends Component {
   render() {
   return (
- 		<ul>
+ 		 <div>
+        <input type="text" name="usuario1" id="usr"> Usuario1 </input>
+        <input type="text" name="usuario1" id="usr"> Usuario2 </input>
+        <button name="Fight" id="button"> Fight 💪🏻 </button>
+        <Frulist Instas={this.state.Instas} />
+      </div>
+  	);
+  }
+  }
+
+  export default Frulist;
+
+
+
+  <ul>
           {this.props.frunas.map(u => {
             return (
               <Insta
@@ -15,9 +29,4 @@ class Intalist extends Component {
               />
             );
           })}
-        </ul>
-  	);
-  }
-  }
-
-  export default Frulist;
+    </ul>
